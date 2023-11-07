@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "llm-agents"
+version = "0.1.0"
+description = ""
+authors = ["Sean Wesenberg <wookets@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sql = "llm_agents.sql_agent:run_conversation"
