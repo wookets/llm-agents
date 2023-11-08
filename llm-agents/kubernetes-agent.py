@@ -2,15 +2,22 @@ import openai
 import json
 import subprocess
 
+
 # Example dummy function hard coded to return the same weather
 # In production, this could be your backend API or an external API
 def run_kubectl_command(command):
-  result = subprocess.run(cmd, shell=True, text=True, capture_output=True)
-  return result.stdout, result.stderr
+    result = subprocess.run(cmd, shell=True, text=True, capture_output=True)
+    return result.stdout, result.stderr
+
 
 def run_conversation():
     # Step 1: send the conversation and available functions to the model
-    messages = [{"role": "user", "content": "Find all crashing pods in kubernetes using kubectl?"}]
+    messages = [
+        {
+            "role": "user",
+            "content": "Find all crashing pods in kubernetes using kubectl?",
+        }
+    ]
     tools = [
         {
             "type": "function",
@@ -67,5 +74,6 @@ def run_conversation():
             messages=messages,
         )  # get a new response from the model where it can see the function response
         return second_response
+
 
 print(run_conversation())
